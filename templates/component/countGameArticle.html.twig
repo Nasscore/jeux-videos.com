@@ -1,0 +1,17 @@
+<div class="card" style="width: 18rem;">
+    <img src="{{ game.pathImg }}" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h2>{{ game.title }}</h2>
+        <h5>{{ game.price }} €</h5>
+        <h5>{{ game.noteGlobal }}</h5>
+        {% for i in 0..9 %}
+            {% if game.noteGlobal > i %}
+        <i class="fas fa-star"></i>
+            {% else %}
+        <i class="far fa-star"></i>
+        {% endif %}
+        {% endfor %}
+        <p>{{ game.description }}</p>
+        <p>{{ game.launchAt|date }}</p>
+    </div>
+</div>

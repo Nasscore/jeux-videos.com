@@ -1,0 +1,30 @@
+{% extends 'layout/front.html.twig' %}
+
+{% block title %}Hello ForumController!{% endblock %}
+
+{% block body %}
+    <br>
+    <br>
+<h2>{{ forum.title }}</h2>
+<br>
+    <br>
+    <br>
+    {% for topic in topics %}
+        {% if forum.id == topic.forums.id %}
+            <h3> <a href="{{ path('detail_topic', {'id':topic.id}) }}">{{ topic.title }}</a></h3>
+            <p>{{ topic.createdAt|date }}</p>
+            <hr>
+            <br>
+
+        {% endif %}
+    {% endfor %}
+
+
+
+{#    <h3>{{ topic.title }}</h3>#}
+{#    <h5>{{ topic.createdAt|date }}</h5>#}
+
+
+
+
+{% endblock %}

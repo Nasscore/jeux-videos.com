@@ -1,21 +1,53 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Jeux vidéos{% endblock %}</title>
+{% extends 'base.html.twig' %}
 
-        {% block stylesheets %}
-        {{ encore_entry_link_tags('style') }}
-        {% endblock %}
+ {% block header %}
+     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+         <div class="container-fluid">
+             <a class="navbar-brand" href="#">ADMIN</a>
+             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+             </button>
+             <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                 <ul class="navbar-nav">
+                     <li class="nav-item">
+                         <a class="nav-link active" aria-current="page" href="#">Home</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="#">Features</a>
+                     </li>
+                     <li class="nav-item dropdown">
+                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                             FORUMS
+                         </a>
+                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                             {% for forum in getAllForums() %}
+                                 <li><a class="dropdown-item" href="{{ path('forum',{'id':forum.id}) }}">{{ forum.title }}</a></li>
+                             {% endfor %}
+                         </ul>
+                     </li>
+                     <li class="nav-item dropdown">
+                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                             CRUD
+                         </a>
+                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                             <li><a class="dropdown-item" href="{{ path('list_category') }}">POST CATEGORY</a></li>
+                             <li><a class="dropdown-item" href="{{ path('post_list') }}">POST</a></li>
+                         </ul>
+                     </li>
+                 </ul>
+             </div>
+         </div>
+     </nav>
+ {% endblock %}
 
-        {% block javascripts %}
 
-        {% endblock %}
-    </head>
+{% block body %}
 
-    <body>
-        {% block body %}{% endblock %}
-    {{ encore_entry_script_tags('globalScript') }}
-    </body>
+{% endblock %}
 
-</html>
+
+    {% block footer %}
+
+    {% endblock %}
+
+

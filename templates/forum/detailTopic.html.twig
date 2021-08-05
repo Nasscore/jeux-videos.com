@@ -3,28 +3,26 @@
 {% block title %}Hello ForumController!{% endblock %}
 
 {% block body %}
-    <br>
-    <br>
-<h2>{{ forum.title }}</h2>
-<br>
-    <br>
-    <br>
-    {% for topic in topics %}
-        {% if forum.id == topic.forums.id %}
-            <h3> <a href="{{ path('detail_topic', {'id':topic.forums.id,'title' : topic.title}) }}">{{ topic.title }}</a></h3>
-            <p>{{ topic.createdAt|date }}</p>
+         <h1>{{ topic.title }}</h1>
+
+    {% for message in messages %}
             <hr>
-            <br>
+           <p>{{ message.content }}</p>
+          <p>{{ message.createdAt|date('d-m-Y H:i:s') }}</p>
+          <p>{{ message.user.firstName }} {{ message.user.lastName }}</p>
 
-        {% endif %}
+            {% if app.user.id == message.user.id %}
+                <a href="{{path('message_edit',{'id':message.id})}}" class="btn btn-primary">Editer</a>
+                <a href="{{path('message_delete',{'id':message.id})}}" class="btn btn-danger">Supprimer</a>
+            {% endif %}
+
+            <hr>
     {% endfor %}
+    {% if app.user %}
+        <a href="{{path('message_new',{'id':topic.id})}}" class="btn btn-success">Repondre</a>
 
 
-
-{#    <h3>{{ topic.title }}</h3>#}
-{#    <h5>{{ topic.createdAt|date }}</h5>#}
-
-
+    {% endif %}
 
 
 {% endblock %}

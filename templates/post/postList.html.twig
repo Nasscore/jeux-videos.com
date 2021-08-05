@@ -1,10 +1,21 @@
-{% extends 'home/indexAdmin.html.twig' %}
+{% extends 'layout/admin.html.twig' %}
 
-{% block title %}Create Post Category{% endblock %}
-{% block header %}{% endblock %}
+{% block title %}ALL POST{% endblock %}
+
 {% block body %}
-    {{ form_start((form)) }}
+    <h1>Liste des posts</h1>
+    <a class="btn btn-success" href="{{ path ('create_post') }}">Créer</a>
+    <br>
+    <br>
+    {% for post in posts %}
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.content }}</p>
+        <p>{{ post.NumberView }}</p>
 
-    {{ form_end(form) }}
+        <a class="btn btn-primary" href="{{ path('edit_post', {'id' : post.id}) }}">Editer</a>
+        <a class="btn btn-danger" href="{{ path('delete_post', {'id' : post.id}) }}">Supprimer</a>
+        <br>
+        <br>
+    {% endfor %}
+
 {% endblock %}
-{% block footer %}{% endblock %}

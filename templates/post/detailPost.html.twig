@@ -1,10 +1,12 @@
-{% extends 'home/indexAdmin.html.twig' %}
+{% extends 'home/index.html.twig' %}
 
-{% block title %}Edit Post{% endblock %}
-{% block header %}{% endblock %}
+{% block title %}Post detail{% endblock %}
+
 {% block body %}
-    {{ form_start((formPost)) }}
 
-    {{ form_end(formPost) }}
+<h1>Titre : {{ post.title }}</h1>
+    <br>
+    <h3>Content :</h3><p>{{ post.content }}</p>
+    <h5>{{ post.createdAt|date('Y-m-d H:i') }}</h5>
+    <h5>{{ post.NumberView }} vues</h5>
 {% endblock %}
-{% block footer %}{% endblock %}

@@ -2,16 +2,16 @@
   "entrypoints": {
     "globalScript": {
       "js": [
-        "/build/runtime.js",
-        "/build/globalScript.js"
+        "/build/runtime.30a60611.js",
+        "/build/globalScript.920dd6b7.js"
       ]
     },
     "style": {
       "js": [
-        "/build/runtime.js"
+        "/build/runtime.30a60611.js"
       ],
       "css": [
-        "/build/style.css"
+        "/build/style.1bde0a00.css"
       ]
     }
   }
